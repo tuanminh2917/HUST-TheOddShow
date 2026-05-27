@@ -1,0 +1,90 @@
+# =========================================================================
+# UNITY AUTO-GENERATED DIRECTORIES (THƯ MỤC UNITY TỰ SINH - KHÔNG COMMIT)
+# =========================================================================
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Cc]apture[Oo]utput/
+/[Cc]om[Bb]uild[Cc]ache/
+/[Ll]ogs/
+/[Mm]emoryCaptures/
+
+# =========================================================================
+# USER SETTINGS & LAYOUTS (THIẾT LẬP CÁ NHÂN VÀ BỐ TRÍ EDITOR)
+# =========================================================================
+/[Uu]ser[Ss]ettings/
+*.dwlt
+*.user
+*.userprefs
+
+# =========================================================================
+# ASSET MUTED CORES (BÁO CÁO CRASH VÀ FILE TẠM)
+# =========================================================================
+/Assets/AssetStoreTools*
+/Assets/Plugins/Android/assets/
+
+# Cấu hình WebGL và crash dumps
+*.unitypackage
+*.CrashCounter
+
+# =========================================================================
+# IDE PROJECTS & SOLUTIONS (FILE CỦA TRÌNH SOẠN THẢO CODE)
+# =========================================================================
+# Visual Studio / VS Code / Rider tự sinh các file này dựa trên cấu hình Unity
+# Nếu commit sẽ gây xung đột liên tục giữa các máy.
+ExportedObj/
+.consulo/
+.gradle/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Thư mục ẩn của các IDE
+.vs/
+.idea/
+.gradle/
+.vscode/
+
+# =========================================================================
+# OS GENERATED FILES (FILE RÁC CỦA HỆ ĐIỀU HÀNH)
+# =========================================================================
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.Trashes
+VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# =========================================================================
+# PLUGINS & ASSETS SPECIFIC (TÙY CHỌN BỔ SUNG)
+# =========================================================================
+# Bỏ qua các file tạm của Odin Inspector nếu có dùng
+.odin/
+
+# Bỏ qua các file build đầu ra của bạn (nếu bạn tạo thư mục riêng để chứa file chạy game)
+/[Bb]in/
