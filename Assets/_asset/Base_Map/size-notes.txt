@@ -1,0 +1,4 @@
+map: 964*665
+puzzle box: 569*669
+inventory: 1565*163
+slot: 111*116
