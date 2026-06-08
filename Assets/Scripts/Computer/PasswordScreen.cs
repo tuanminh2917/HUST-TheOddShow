@@ -65,6 +65,9 @@ public class PasswordScreen : MonoBehaviour
 
         if (passwordInputField.text == password)
         {
+            Debug.Log("Mật khẩu nhập: " + passwordInputField.text);
+            Debug.Log("Mật khẩu đúng: " + password);
+
             Debug.Log("Mật khẩu chính xác!");
             gameObject.SetActive(false);
         }

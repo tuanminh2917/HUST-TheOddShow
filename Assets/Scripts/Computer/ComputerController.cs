@@ -10,11 +10,7 @@ public class ComputerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        passwordScreen.SetActive(true);
-        passwordScreen.GetComponent<PasswordScreen>().functionalButtons[1].onClick.AddListener(() =>
-        {
-            openScreen.SetActive(true);
-        });
+        passwordScreen.SetActive(false);
 
         openScreen.GetComponentInChildren<Button>().onClick.AddListener(() =>
         {
