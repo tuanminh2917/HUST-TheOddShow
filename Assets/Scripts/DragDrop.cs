@@ -1,42 +1,63 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
+    public string id;
+
     [SerializeField] private Canvas canvas;
 
     private RectTransform rectTransform;
     public CanvasGroup canvasGroup;
 
+    // BỔ SUNG: Lưu lại vị trí và cha cũ để trả về khi làm sai
+    private Transform oldParent;
+    private Vector2 oldPosition;
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+        canvas = GetComponentInParent<Canvas>();
     }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("Begin Drag");
-        canvasGroup.alpha = 0.6f; // Make the item semi-transparent while dragging
-        canvasGroup.blocksRaycasts = false; // Allow raycasts to pass through the item while dragging
+        canvasGroup.alpha = 0.6f;
+        canvasGroup.blocksRaycasts = false;
+
+        // 1. Ghi nhớ vị trí và gốc gác cũ trước khi kéo
+        oldParent = transform.parent;
+        oldPosition = rectTransform.anchoredPosition;
+
+        rectTransform.localScale = Vector3.one;
+        transform.SetParent(canvas.transform);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("Dragging");
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("End Drag");
-        canvasGroup.alpha = 1f; // Restore the item's opacity
-        canvasGroup.blocksRaycasts = true; // Allow raycasts to interact with the item again
+        canvasGroup.alpha = 1f;
+        canvasGroup.blocksRaycasts = true;
+
+        // BỔ SUNG: Nếu kết thúc kéo mà cha vẫn là Canvas 
+        // (Nghĩa là đĩa Petri từ chối nhận hoặc thả ra ngoài khoảng trống)
+        if (transform.parent == canvas.transform)
+        {
+            // Trả món đồ về đúng vị trí cũ trong Inventory
+            transform.SetParent(oldParent);
+            rectTransform.anchoredPosition = oldPosition;
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log("Pointer Down");
     }
-
-
 }
