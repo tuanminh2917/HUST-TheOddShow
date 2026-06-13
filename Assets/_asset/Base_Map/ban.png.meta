@@ -116,12 +116,12 @@ TextureImporter:
       name: ban_0
       rect:
         serializedVersion: 2
-        x: 369
-        y: 437
-        width: 379
-        height: 198
+        x: 379
+        y: 451
+        width: 316
+        height: 169
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f7cb6741257dc9f449e87261f169064a
     internalID: 0
     vertices: []
     indices: 
