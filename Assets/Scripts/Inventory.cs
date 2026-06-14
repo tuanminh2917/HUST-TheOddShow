@@ -13,6 +13,8 @@ public class Inventory : MonoBehaviour
     // Biến để lưu vết bộ đếm thời gian đang chạy
     private Coroutine clearNameCoroutine;
 
+    public GameObject popup;
+
     void Start()
     {
         slotList = new List<GameObject>();
@@ -37,6 +39,8 @@ public class Inventory : MonoBehaviour
         {
             CheckClickedSlot();
         }
+
+        CheckForKey(); // sẽ xóa trong các phiên bản sau
     }
 
     private void CheckClickedSlot()
@@ -114,6 +118,34 @@ public class Inventory : MonoBehaviour
         if (itemName != null)
         {
             itemName.text = "";
+        }
+    }
+
+    // BỔ SUNG: Hàm phát hiện item 'Key', hiển thị popup và dừng trò chơi
+    private void CheckForKey()
+    {
+        // Nếu popup đã hiển thị (trò chơi đã dừng), không cần quét lại để tránh tốn hiệu năng
+        if (popup != null && popup.activeSelf) return;
+
+        foreach (GameObject slot in slotList)
+        {
+            if (slot != null)
+            {
+                DragDrop item = slot.GetComponentInChildren<DragDrop>();
+
+                // Kiểm tra xem trong slot có item không, và ID hoặc Tên của item đó có phải là "Key" hay không
+                if (item != null && (item.id == "Key" || item.gameObject.name == "Key"))
+                {
+                    if (popup != null)
+                    {
+                        popup.SetActive(true); // Hiển thị popup
+                    }
+
+                    Time.timeScale = 0f; // Dừng toàn bộ các hoạt động vật lý/thời gian trong trò chơi
+
+                    break; // Thoát vòng lặp ngay khi tìm thấy chiếc chìa khóa đầu tiên
+                }
+            }
         }
     }
 }

@@ -5,13 +5,15 @@ using TMPro;
 
 public class PasswordScreen : MonoBehaviour
 {
-    private string password = "15331674837";
+    [SerializeField] private string password = "131783";
 
     public List<Button> digitButtons;
     public List<Button> functionalButtons;
 
     // THAY ĐỔI: Chuyển hẳn thành kiểu TMP_InputField để nhận diện cả ô nhập liệu
     public TMP_InputField passwordInputField;
+
+    public GameObject mainScreen;
 
     void Start()
     {
@@ -69,6 +71,7 @@ public class PasswordScreen : MonoBehaviour
             Debug.Log("Mật khẩu đúng: " + password);
 
             Debug.Log("Mật khẩu chính xác!");
+            mainScreen.SetActive(true);
             gameObject.SetActive(false);
         }
         else

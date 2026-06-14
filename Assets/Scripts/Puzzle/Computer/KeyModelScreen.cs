@@ -3,20 +3,18 @@ using UnityEngine.UI;
 
 public class KeyModelScreen : MonoBehaviour
 {
-
+    public Button backwardBtn;
     public Button printBtn;
 
-    public GameObject popUp;
+    public GameObject printerPuzzle;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        popUp.SetActive(false);
-        printBtn.onClick.AddListener(() => { popUp.SetActive(true); });
+        printBtn.onClick.AddListener(() => { 
+            printerPuzzle.SetActive(true);
+            printerPuzzle.GetComponentInChildren<Printer>().isPrinted = true;
+        });
+        backwardBtn.onClick.AddListener(() => { gameObject.SetActive(false); });
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
