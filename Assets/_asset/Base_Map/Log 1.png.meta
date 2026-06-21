@@ -1,31 +1,37 @@
 fileFormatVersion: 2
-guid: 3a27ae9ea8d7bf4408cbb338db86b383
+guid: c9efd86b66bf9aa4e89a01656ff4f2d5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4756227300383307974
-    second: trace3_0
+      213: 2863788924144452396
+    second: Log 1_0
   - first:
-      213: 8244919493699813339
-    second: trace3_1
+      213: -4246366408374536134
+    second: Log 1_1
   - first:
-      213: 2552335798710541903
-    second: trace3_2
+      213: 7586589173513025158
+    second: Log 1_2
   - first:
-      213: -7940420704183415014
-    second: trace3_3
+      213: -4949643858470007796
+    second: Log 1_3
   - first:
-      213: 4822710187137678740
-    second: trace3_4
+      213: 8040074498975836902
+    second: Log 1_4
   - first:
-      213: 1564569761002614105
-    second: trace3_5
+      213: -5889041527563338293
+    second: Log 1_5
   - first:
-      213: 7293864555512815083
-    second: trace3_6
+      213: -2996358524272947125
+    second: Log 1_6
   - first:
-      213: 1676318405151333318
-    second: trace3_7
+      213: -6890887606625959253
+    second: Log 1_7
+  - first:
+      213: 4915770444037341622
+    second: Log 1_8
+  - first:
+      213: 9023332259735202921
+    second: Log 1_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -134,13 +140,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: trace3_0
+      name: Log 1_0
       rect:
         serializedVersion: 2
-        x: 1454
-        y: 607
-        width: 132
-        height: 87
+        x: 152
+        y: 0
+        width: 1253
+        height: 930
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,184 +155,206 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a3743a9487c7efdb0800000000000000
-      internalID: -4756227300383307974
+      spriteID: c23045f7ad83eb720800000000000000
+      internalID: 2863788924144452396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: trace3_1
+      name: Log 1_1
       rect:
         serializedVersion: 2
-        x: 1453
-        y: 743
-        width: 132
-        height: 84
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bdfbba79896db6270800000000000000
-      internalID: 8244919493699813339
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: trace3_2
-      rect:
-        serializedVersion: 2
-        x: 1334
-        y: 515
-        width: 115
-        height: 151
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f4e97a5d2e7bb6320800000000000000
-      internalID: 2552335798710541903
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: trace3_3
-      rect:
-        serializedVersion: 2
-        x: 1334
-        y: 382
-        width: 112
-        height: 154
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a1f8dff8075fdc190800000000000000
-      internalID: -7940420704183415014
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: trace3_4
-      rect:
-        serializedVersion: 2
-        x: 1454
-        y: 475
-        width: 132
-        height: 84
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 49dbff60d55bde240800000000000000
-      internalID: 4822710187137678740
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: trace3_5
-      rect:
-        serializedVersion: 2
-        x: 1334
-        y: 252
-        width: 112
-        height: 149
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 95de0ee78e776b510800000000000000
-      internalID: 1564569761002614105
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: trace3_6
-      rect:
-        serializedVersion: 2
-        x: 1453
-        y: 339
-        width: 132
-        height: 83
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bed572f2b23093560800000000000000
-      internalID: 7293864555512815083
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: trace3_7
-      rect:
-        serializedVersion: 2
-        x: 1457
-        y: 233
-        width: 132
-        height: 83
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6cb9e7d35ba734710800000000000000
-      internalID: 1676318405151333318
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: trace3_8
-      rect:
-        serializedVersion: 2
-        x: 1334
-        y: 649
-        width: 114
-        height: 150
+        x: 1399
+        y: 745
+        width: 6
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a79ca49f192dee84da2507f0674e4ee6
-      internalID: -1782153708
+      spriteID: a383fa2ff30e115c0800000000000000
+      internalID: -4246366408374536134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Log 1_2
+      rect:
+        serializedVersion: 2
+        x: 1399
+        y: 526
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 686711868aaf84960800000000000000
+      internalID: 7586589173513025158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Log 1_3
+      rect:
+        serializedVersion: 2
+        x: 1430
+        y: 456
+        width: 8
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0c833392255f4bb0800000000000000
+      internalID: -4949643858470007796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Log 1_4
+      rect:
+        serializedVersion: 2
+        x: 1398
+        y: 401
+        width: 9
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6eaa12f9825149f60800000000000000
+      internalID: 8040074498975836902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Log 1_5
+      rect:
+        serializedVersion: 2
+        x: 1446
+        y: 276
+        width: 6
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcd3012aeebe54ea0800000000000000
+      internalID: -5889041527563338293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Log 1_6
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 23
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b405ffc2ccbca66d0800000000000000
+      internalID: -2996358524272947125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Log 1_7
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 23
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba20be33b36ae50a0800000000000000
+      internalID: -6890887606625959253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Log 1_8
+      rect:
+        serializedVersion: 2
+        x: 1306
+        y: 22
+        width: 20
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b1c53a8c23583440800000000000000
+      internalID: 4915770444037341622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Log 1_9
+      rect:
+        serializedVersion: 2
+        x: 1353
+        y: 24
+        width: 15
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96ce6dfe1e0593d70800000000000000
+      internalID: 9023332259735202921
       vertices: []
       indices: 
       edges: []
@@ -335,7 +363,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e74864b59d74e194c9281ff6d248c5d1
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -345,15 +373,16 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      trace3_0: -4756227300383307974
-      trace3_1: 8244919493699813339
-      trace3_2: 2552335798710541903
-      trace3_3: -7940420704183415014
-      trace3_4: 4822710187137678740
-      trace3_5: 1564569761002614105
-      trace3_6: 7293864555512815083
-      trace3_7: 1676318405151333318
-      trace3_8: -1782153708
+      Log 1_0: 2863788924144452396
+      Log 1_1: -4246366408374536134
+      Log 1_2: 7586589173513025158
+      Log 1_3: -4949643858470007796
+      Log 1_4: 8040074498975836902
+      Log 1_5: -5889041527563338293
+      Log 1_6: -2996358524272947125
+      Log 1_7: -6890887606625959253
+      Log 1_8: 4915770444037341622
+      Log 1_9: 9023332259735202921
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

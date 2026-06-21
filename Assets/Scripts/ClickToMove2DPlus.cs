@@ -53,6 +53,8 @@ public class ClickToMove2DPlus : MonoBehaviour
             {
                 Debug.Log("Click vào vùng quá xa lưới di chuyển!");
             }
+
+            TutorialManager.Instance.CompleteTutorial(TutorialType.ClickToMove);
         }
     }
 

@@ -8,83 +8,94 @@ public enum TutorialType
     ClickToMove,
     ClickableItem,
     DraggableItem,
-    Clickable_DragableItem
 }
 
 public class TutorialManager : MonoBehaviour
 {
     public static TutorialManager Instance { get; private set; }
 
-    [System.Serializable]
-    public struct TutorialContent
-    {
-        public TutorialType type;
-        [TextArea] public string message;
-    }
+    public GameObject tutorialPanel;
+    public TextMeshProUGUI tutorialText;
 
-    [Header("Cấu hình nội dung")]
-    public List<TutorialContent> tutorialList;
-
-    [Header("Giao diện UI")]
-    public GameObject tutorialPanel; // Panel chứa Text
-    public TextMeshProUGUI tutorialText; // Thành phần hiển thị chữ
-    public float displayDuration = 4f; // Thời gian tự ẩn hướng dẫn
-
-    // Dictionary để lưu trạng thái: Loại hướng dẫn -> Đã hiển thị chưa?
-    private Dictionary<TutorialType, bool> tutorialStatus = new Dictionary<TutorialType, bool>();
+    private Dictionary<TutorialType, bool> isTutorialCompleted = new Dictionary<TutorialType, bool>();
     private Dictionary<TutorialType, string> tutorialMessages = new Dictionary<TutorialType, string>();
-    private Coroutine hideCoroutine;
+
+    // Lưu danh sách các hướng dẫn thuộc vùng/vật phẩm mà người chơi đang tiếp cận
+    private List<TutorialType> currentZoneTutorials = new List<TutorialType>();
 
     private void Awake()
     {
-        // Khởi tạo Singleton
         if (Instance == null) { Instance = this; }
         else { Destroy(gameObject); return; }
 
-        // Khởi tạo dữ liệu
-        foreach (var item in tutorialList)
+        tutorialMessages[TutorialType.ClickToMove] = "- Click vào bản đồ để di chuyển nhân vật";
+        tutorialMessages[TutorialType.ClickableItem] = "- Một số vật phẩm có thể click";
+        tutorialMessages[TutorialType.DraggableItem] = "- Một số vật phẩm có thể kéo";
+
+        foreach (TutorialType type in System.Enum.GetValues(typeof(TutorialType)))
         {
-            tutorialStatus[item.type] = false; // Ban đầu tất cả đều chưa hiển thị
-            tutorialMessages[item.type] = item.message;
+            isTutorialCompleted[type] = false;
         }
     }
 
     private void Start()
     {
-        // Trò chơi bắt đầu: Hiển thị ngay hướng dẫn Di chuyển
-        TriggerTutorial(TutorialType.ClickToMove);
+        // Đầu game chỉ hiện di chuyển
+        UpdateTutorialZone(new List<TutorialType> { TutorialType.ClickToMove }, true);
     }
 
-    // Hàm public để các đối tượng khác gọi khi thỏa mãn điều kiện
-    public void TriggerTutorial(TutorialType type)
+    // HÀM MỚI: Cập nhật danh sách hướng dẫn khi đi vào/ra khỏi vùng của vật phẩm
+    public void UpdateTutorialZone(List<TutorialType> zoneTutorials, bool isEntering)
     {
-        // KIỂM TRA: Nếu đã hiển thị rồi thì bỏ qua không làm gì cả
-        if (tutorialStatus.ContainsKey(type) && tutorialStatus[type] == true)
+        if (isEntering)
         {
-            return;
+            currentZoneTutorials = zoneTutorials;
+            RefreshUI();
+        }
+        else
+        {
+            currentZoneTutorials.Clear();
+            tutorialPanel.SetActive(false);
+        }
+    }
+
+    // HÀM MỚI: Tự động quét và hiển thị những nội dung CHƯA hoàn thành
+    public void RefreshUI()
+    {
+        string combinedMessage = "";
+        bool hasAnyVisibleContent = false;
+
+        foreach (TutorialType type in currentZoneTutorials)
+        {
+            // Nếu hướng dẫn này chưa làm xong thì mới thêm vào dòng chữ hiển thị
+            if (!isTutorialCompleted[type])
+            {
+                if (combinedMessage != "") combinedMessage += "\n"; // Xuống dòng nếu có nhiều hơn 1 thông báo
+                combinedMessage += tutorialMessages[type];
+                hasAnyVisibleContent = true;
+            }
         }
 
-        // Nếu chưa hiển thị, tiến hành hiển thị
-        ShowTutorialUI(type);
+        if (hasAnyVisibleContent)
+        {
+            tutorialText.text = combinedMessage;
+            tutorialPanel.SetActive(true);
+        }
+        else
+        {
+            tutorialPanel.SetActive(false); // Nếu hoàn thành hết rồi thì ẩn Panel đi
+        }
     }
 
-    private void ShowTutorialUI(TutorialType type)
+    // HÀM HOÀN THÀNH: Gọi khi người chơi thực hiện thao tác thành công
+    public void CompleteTutorial(TutorialType type)
     {
-        // Đánh dấu là đã hiển thị (Đảm bảo chỉ xuất hiện 1 lần duy nhất)
-        tutorialStatus[type] = true;
+        if (isTutorialCompleted.ContainsKey(type))
+        {
+            isTutorialCompleted[type] = true;
+        }
 
-        // Hiển thị Text lên UI
-        tutorialText.text = tutorialMessages[type];
-        tutorialPanel.SetActive(true);
-
-        // Xử lý đếm ngược để ẩn UI
-        if (hideCoroutine != null) StopCoroutine(hideCoroutine);
-        hideCoroutine = StartCoroutine(Co_HideTutorial());
-    }
-
-    private IEnumerator Co_HideTutorial()
-    {
-        yield return new WaitForSeconds(displayDuration);
-        tutorialPanel.SetActive(false);
+        // Cập nhật lại UI ngay lập tức để xóa dòng chữ vừa làm xong
+        RefreshUI();
     }
 }

@@ -6,20 +6,19 @@ public class PoweredWireStats : MonoBehaviour
 {
     public bool movable = false;
     public bool moving = false;
-    public Vector3 startPosition;
+    public Vector2 startPosition;
     public Color objectColor;
     public bool connected = false;
-    public Vector3 connectedPosition;
+    public Vector2 connectedPosition;
+
+    [SerializeField] RectTransform rectTransform;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        startPosition = transform.position;
+        rectTransform = GetComponent<RectTransform>();
+
+        startPosition = rectTransform.anchoredPosition;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
