@@ -12,8 +12,6 @@ public class ElectricBox : MonoBehaviour, IDropHandler
 
     public GameObject electricBoxPuzzleLogic;
 
-    public GameObject electricBoxPuzzle;
-
     public ComputerController computerController;
 
     // 2. SỬA: Đổi sang UGUI để tương thích với hệ Canvas 2D của bạn
@@ -35,7 +33,6 @@ public class ElectricBox : MonoBehaviour, IDropHandler
                 hasCopper = true;
                 Destroy(eventData.pointerDrag);
                 electricBoxPuzzleLogic.SetActive(true);
-                electricBoxPuzzle.SetActive(false);
 
                 //Debug.Log("Kết nối tủ điện thành công bằng vật liệu Copper!");
             }
@@ -51,7 +48,6 @@ public class ElectricBox : MonoBehaviour, IDropHandler
             {
                 hasCheckedOnce = true;
                 electricBoxPuzzleLogic.SetActive(true);
-                electricBoxPuzzle.SetActive(false);
             }
         }
         else if (isConnected && hasCopper)

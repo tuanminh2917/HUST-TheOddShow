@@ -1,26 +1,25 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class TutorialTrigger : MonoBehaviour
 {
-    public TutorialType tutorialToTrigger;
+    // Thay đổi từ một biến đơn lẻ thành một List
+    public List<TutorialType> tutorialsToTrigger = new List<TutorialType>();
 
-    // Trường hợp 1: Kích hoạt khi người chơi đi vào vùng (Dùng Collider dạng IsTrigger)
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            TutorialManager.Instance.TriggerTutorial(tutorialToTrigger);
+            // Truyền cả danh sách vào Manager
+            TutorialManager.Instance.UpdateTutorialZone(tutorialsToTrigger, true);
         }
     }
 
-    // Trường hợp 2: Kích hoạt dựa trên khoảng cách (Nếu không dùng Vật lý/Trigger)
-    // Bạn có thể gọi hàm này từ hệ thống AI hoặc hệ thống tương tác của bạn
-    public void CheckDistanceAndTrigger(Vector3 playerPosition)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        float distance = Vector3.Distance(transform.position, playerPosition);
-        if (distance < 3f) // Khoảng cách đủ gần
+        if (other.CompareTag("Player"))
         {
-            TutorialManager.Instance.TriggerTutorial(tutorialToTrigger);
+            TutorialManager.Instance.UpdateTutorialZone(tutorialsToTrigger, false);
         }
     }
 }

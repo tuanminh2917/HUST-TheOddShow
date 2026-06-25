@@ -33,6 +33,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
         rectTransform.localScale = Vector3.one;
         transform.SetParent(canvas.transform);
+
+        // GỌI DÒNG NÀY: Hoàn thành hướng dẫn kéo vật phẩm ngay khi họ vừa bắt đầu kéo
+        TutorialManager.Instance.CompleteTutorial(TutorialType.DraggableItem);
     }
 
     public void OnDrag(PointerEventData eventData)

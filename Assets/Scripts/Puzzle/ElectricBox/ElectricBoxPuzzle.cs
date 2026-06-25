@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class ElectricBoxPuzzle : MonoBehaviour
 {
-    public UnpowerWireStats1[] unPoweredWireS;
-    public GameObject electricBoxPuzzle;
+    public UnpowerWireStats[] unPoweredWireS;
+    public GameObject electricBox;
 
     // Update is called once per frame
     void Update()
@@ -12,8 +12,8 @@ public class ElectricBoxPuzzle : MonoBehaviour
         {
             if (unpower.connected == false) return;
         }
-        electricBoxPuzzle.SetActive(true);
-        electricBoxPuzzle.GetComponentInChildren<ElectricBox>().isConnected = true;
+        electricBox.SetActive(true);
+        electricBox.GetComponentInChildren<ElectricBox>().isConnected = true;
         gameObject.SetActive(false);
     }
 }

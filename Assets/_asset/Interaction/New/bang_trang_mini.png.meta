@@ -1,25 +1,10 @@
 fileFormatVersion: 2
-guid: 344d57fb2fdcbb844a819483510544e2
+guid: 1ea4cb06aee061f4e82605c50b0f81d4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2863788924144452396
-    second: Log 1_0
-  - first:
-      213: -4246366408374536134
-    second: Log 1_1
-  - first:
-      213: 7586589173513025158
-    second: Log 1_2
-  - first:
-      213: -4949643858470007796
-    second: Log 1_3
-  - first:
-      213: 8040074498975836902
-    second: Log 1_4
-  - first:
-      213: -5889041527563338293
-    second: Log 1_5
+      213: 4634379668423306297
+    second: bang_trang_mini_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -128,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Log 1_4
+      name: bang_trang_mini_0
       rect:
         serializedVersion: 2
-        x: 1077
-        y: 761
-        width: 386
-        height: 109
+        x: 320
+        y: 746
+        width: 220
+        height: 154
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6eaa12f9825149f60800000000000000
-      internalID: 8040074498975836902
+      spriteID: 93ce9a221cf905040800000000000000
+      internalID: 4634379668423306297
       vertices: []
       indices: 
       edges: []
@@ -153,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0dc21641f67bc9b4e980ebbc9fd544f8
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -163,13 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Log 1_0: 2863788924144452396
-      Log 1_1: -4246366408374536134
-      Log 1_2: 7586589173513025158
-      Log 1_3: -4949643858470007796
-      Log 1_4: 8040074498975836902
-      Log 1_5: -5889041527563338293
-      Log 1_6: 1423428207
+      bang_trang_mini_0: 4634379668423306297
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

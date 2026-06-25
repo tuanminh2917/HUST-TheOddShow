@@ -42,5 +42,7 @@ public class CollectableItem : MonoBehaviour, IPointerClickHandler
         {
             Debug.LogError("Không tìm thấy hệ thống Inventory trong Scene!");
         }
+        // GỌI DÒNG NÀY: Hoàn thành hướng dẫn click
+        TutorialManager.Instance.CompleteTutorial(TutorialType.ClickableItem);
     }
 }
