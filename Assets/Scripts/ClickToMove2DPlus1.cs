@@ -3,10 +3,10 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class ClickToMove2DPlus : MonoBehaviour
+public class ClickToMove2DPlus1 : MonoBehaviour
 {
     private NavMeshAgent agent;
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     [Header("Cấu hình quét điểm")]
     [SerializeField] private float maxSampleDistance = 1.0f;
@@ -24,7 +24,6 @@ public class ClickToMove2DPlus : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -44,27 +43,32 @@ public class ClickToMove2DPlus : MonoBehaviour
             Vector3 targetPos = Camera.main.ScreenToWorldPoint(mousePos);
             targetPos.z = transform.position.z;
 
-            // --- ĐIỀU CHỈNH VỊ TRÍ BẮN TIA RAYCAST XUỐNG DƯỚI ---
-            Vector2 origin = transform.position;
-            Vector2 offset = new Vector2(0, -0.5f); // Điều chỉnh xuống dưới 0.5 unit
-            origin += offset;
-
-            // Bắn một tia Ray dạng điểm ngay tại vị trí chuột
-            RaycastHit2D hitObstacle = Physics2D.Raycast(origin, Vector2.zero, 0f, unwalkableLayer);
+            // --- SỬA TẠI ĐÂY: Bắn tia tại điểm click chuột (targetPos) chứ không dùng origin của nhân vật ---
+            RaycastHit2D hitObstacle = Physics2D.Raycast(targetPos, Vector2.zero, 0f, unwalkableLayer);
 
             if (hitObstacle.collider != null)
             {
-                Debug.Log($"Click trúng vật thể thuộc vùng cấm: {hitObstacle.collider.name}. Hủy di chuyển!");
-                return; // Thoát hàm luôn, không cho nhân vật chạy hoặc tính toán NavMesh nữa
+                Debug.Log($"Click TRỰC TIẾP trúng vật thể vùng cấm: {hitObstacle.collider.name}. Hủy di chuyển!");
+                return;
             }
 
-            // --- NẾU KHÔNG TRÚNG VẬT CẢN, TIẾP TỤC XỬ LÝ NAVMESH NHƯ CŨ ---
+            // --- NẾU KHÔNG TRÚNG VẬT CẢN TRỰC TIẾP, KIỂM TRA SAI SỐ NAVMESH ---
             NavMeshHit hit;
             if (NavMesh.SamplePosition(targetPos, out hit, maxSampleDistance, NavMesh.AllAreas))
             {
+                // Đo khoảng cách giữa điểm click chuột và điểm rìa NavMesh tìm được
+                float distanceToMesh = Vector2.Distance(targetPos, hit.position);
+
+                // Nếu click quá sát hoặc lọt hẳn vào trong mép vật cản lớn (sai số lớn hơn 0.35 đơn vị)
+                if (distanceToMesh > 0.35f)
+                {
+                    Debug.Log($"Vị trí click quá sát mép hoặc nằm trong vùng cấm ({distanceToMesh}m). Hủy di chuyển tránh giật!");
+                    return;
+                }
+
+                // Nếu mọi thứ hợp lệ, cho Agent di chuyển
                 agent.SetDestination(hit.position);
 
-                // Chỉ hoàn thành tutorial khi nhân vật thực sự di chuyển hợp lệ
                 if (TutorialManager.Instance != null)
                 {
                     TutorialManager.Instance.CompleteTutorial(TutorialType.ClickToMove);

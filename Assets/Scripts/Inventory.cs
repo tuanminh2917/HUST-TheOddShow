@@ -37,6 +37,8 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            //AudioManager.Instance.Play("Click");
+
             CheckClickedSlot();
         }
 
