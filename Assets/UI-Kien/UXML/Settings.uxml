@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI-Kien/USS/Settings.uss?fileID=7433441132597879392&amp;guid=4c9ab1be575e09b4e923a8d7509b2d04&amp;type=3#Settings"/>
+    <ui:VisualElement name="Background" style="flex-grow: 1; width: 100%; height: 100%; align-items: center; justify-content: center; background-image: url(&quot;project://database/Assets/UI-Kien/BackgroundImage/ChatGPT%20Image%20Jun%2028,%202026,%2002_30_39%20PM.png?fileID=2800000&amp;guid=b386df0de2861cd4bafc6e40c40f8514&amp;type=3#ChatGPT Image Jun 28, 2026, 02_30_39 PM&quot;);">
+        <ui:Label text="SETTINGS&#10;" name="settings-title" style="-unity-text-align: upper-center; font-size: 42px; color: rgb(255, 255, 255); margin-bottom: 30px; margin-top: 50px;"/>
+        <ui:Slider label="SFX" value="42" high-value="100" name="slider-sfx" style="color: rgb(255, 255, 255); flex-direction: row; align-items: center; justify-content: center; width: 300px; margin-bottom: 15px; margin-top: 20px; font-size: 20px;"/>
+        <ui:Slider label="BGM&#10;" value="42" high-value="100" name="slider-bgm" style="color: rgb(255, 255, 255); width: 300px; margin-bottom: 15px; margin-top: 0; font-size: 20px;"/>
+        <ui:VisualElement name="button-row" style="flex-grow: 1; flex-direction: row; align-items: center; justify-content: center; margin-top: 0; width: 50%; height: 0; margin-bottom: 0;">
+            <ui:Button text="Resume&#10;" name="resume-btn" style="width: 100px; border-left-color: rgb(255, 68, 68); border-right-color: rgb(255, 68, 68); border-top-color: rgb(255, 68, 68); border-bottom-color: rgb(255, 68, 68); background-color: rgba(188, 188, 188, 0); color: rgb(255, 255, 255);"/>
+            <ui:Button text="Quit&#10;" name="quit-btn" style="width: 100px; border-left-color: rgb(255, 68, 68); border-right-color: rgb(255, 68, 68); border-top-color: rgb(255, 68, 68); border-bottom-color: rgb(255, 68, 68); background-color: rgba(188, 188, 188, 0); color: rgb(255, 255, 255);"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
