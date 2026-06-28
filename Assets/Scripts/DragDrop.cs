@@ -23,6 +23,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        //AudioManager.Instance.Play("Click");
+
         Debug.Log("Begin Drag");
         canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false;

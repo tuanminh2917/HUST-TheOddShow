@@ -9,7 +9,11 @@ public class ClickToMove2DPlus : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     [Header("Cấu hình quét điểm")]
-    [SerializeField] private float maxSampleDistance = 1.0f; // Bán kính tối đa để tìm điểm hợp lệ quanh cú click
+    [SerializeField] private float maxSampleDistance = 1.0f;
+
+    // --- THÊM BIẾN NÀY ĐỂ QUẢN LÝ LAYER KHÔNG CHO PHÉP ĐI ---
+    [Header("Cấu hình Chặn Di Chuyển")]
+    [SerializeField] private LayerMask unwalkableLayer;
 
     [Header("Sprites Hướng Di Chuyển (4 Hướng)")]
     [SerializeField] private Sprite spriteUp;
@@ -22,17 +26,13 @@ public class ClickToMove2DPlus : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // Tắt tính năng tự xoay của Agent trong không gian 3D để phù hợp game 2D
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
 
     void Update()
     {
-        // 1. Xử lý nhận lệnh di chuyển bằng click chuột
         HandleClickToMove();
-
-        // 2. Cập nhật Sprite theo hướng di chuyển thực tế của nhân vật
         UpdateSpriteDirection();
     }
 
@@ -44,60 +44,59 @@ public class ClickToMove2DPlus : MonoBehaviour
             Vector3 targetPos = Camera.main.ScreenToWorldPoint(mousePos);
             targetPos.z = transform.position.z;
 
+            // --- ĐIỀU CHỈNH VỊ TRÍ BẮN TIA RAYCAST XUỐNG DƯỚI ---
+            Vector2 origin = transform.position;
+            Vector2 offset = new Vector2(0, -0.5f); // Điều chỉnh xuống dưới 0.5 unit
+            origin += offset;
+
+            // Bắn một tia Ray dạng điểm ngay tại vị trí chuột
+            RaycastHit2D hitObstacle = Physics2D.Raycast(origin, Vector2.zero, 0f, unwalkableLayer);
+
+            if (hitObstacle.collider != null)
+            {
+                Debug.Log($"Click trúng vật thể thuộc vùng cấm: {hitObstacle.collider.name}. Hủy di chuyển!");
+                return; // Thoát hàm luôn, không cho nhân vật chạy hoặc tính toán NavMesh nữa
+            }
+
+            // --- NẾU KHÔNG TRÚNG VẬT CẢN, TIẾP TỤC XỬ LÝ NAVMESH NHƯ CŨ ---
             NavMeshHit hit;
             if (NavMesh.SamplePosition(targetPos, out hit, maxSampleDistance, NavMesh.AllAreas))
             {
                 agent.SetDestination(hit.position);
+
+                // Chỉ hoàn thành tutorial khi nhân vật thực sự di chuyển hợp lệ
+                if (TutorialManager.Instance != null)
+                {
+                    TutorialManager.Instance.CompleteTutorial(TutorialType.ClickToMove);
+                }
             }
             else
             {
                 Debug.Log("Click vào vùng quá xa lưới di chuyển!");
             }
-
-            TutorialManager.Instance.CompleteTutorial(TutorialType.ClickToMove);
         }
     }
-
     void UpdateSpriteDirection()
     {
-        // Lấy vận tốc hiện tại của Agent
         Vector3 velocity = agent.velocity;
 
-        // Kiểm tra xem nhân vật có đang thực sự di chuyển hay không (tránh sai số nhỏ)
         if (velocity.sqrMagnitude > 0.005f)
         {
-            // So sánh độ lớn tuyệt đối giữa trục X và trục Y để biết đang đi thiên về hướng nào hơn
             if (Mathf.Abs(velocity.x) > Mathf.Abs(velocity.y))
             {
-                // Đi ngang là chủ đạo
-                if (velocity.x > 0)
-                {
-                    ChangeSprite(spriteRight); // Sang phải
-                }
-                else
-                {
-                    ChangeSprite(spriteLeft);  // Sang trái
-                }
+                if (velocity.x > 0) ChangeSprite(spriteRight);
+                else ChangeSprite(spriteLeft);
             }
             else
             {
-                // Đi dọc là chủ đạo
-                if (velocity.y > 0)
-                {
-                    ChangeSprite(spriteUp);    // Lên trên
-                }
-                else
-                {
-                    ChangeSprite(spriteDown);  // Xuống dưới
-                }
+                if (velocity.y > 0) ChangeSprite(spriteUp);
+                else ChangeSprite(spriteDown);
             }
         }
-        // Nếu agent dừng lại (velocity bằng 0), nhân vật sẽ giữ nguyên Sprite hướng cuối cùng mà nó đi
     }
 
     void ChangeSprite(Sprite newSprite)
     {
-        // Chỉ thay đổi nếu sprite mới khác với sprite hiện tại để tối ưu hiệu năng
         if (spriteRenderer.sprite != newSprite && newSprite != null)
         {
             spriteRenderer.sprite = newSprite;

@@ -23,6 +23,7 @@ public class Notebook : MonoBehaviour
         ChangePage(0);
 
         btnList[0].onClick.AddListener(() => {
+            AudioManager.Instance.Play("Click");
             if (pageIdx != 0)
             {
                 pageIdx -= 1;
@@ -30,7 +31,8 @@ public class Notebook : MonoBehaviour
             }
         });
 
-        btnList[1].onClick.AddListener(() => { 
+        btnList[1].onClick.AddListener(() => {
+            AudioManager.Instance.Play("Click");
             if (pageIdx != message.Length - 1) { 
                 pageIdx += 1;
                 ChangePage(pageIdx);

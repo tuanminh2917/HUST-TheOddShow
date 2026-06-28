@@ -16,14 +16,17 @@ public class MainScreen : MonoBehaviour
     {
         privateFolderBtn.onClick.AddListener(() =>
         {
+            AudioManager.Instance.Play("Click");
             privateWindow.SetActive(true);
         });
 
         print_fileFolderBtn.onClick.AddListener(() => {
+            AudioManager.Instance.Play("Click");
             print_fileWindow.SetActive(true);
         });
 
         logsFolderBtn.onClick.AddListener(() => {
+            AudioManager.Instance.Play("Click");
             logsWindow.SetActive(true);
         });
     }

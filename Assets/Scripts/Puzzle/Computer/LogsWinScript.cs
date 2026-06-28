@@ -23,6 +23,7 @@ public class LogsWinScript : MonoBehaviour
     {
         backwardBtn.onClick.AddListener(() =>
         {
+            AudioManager.Instance.Play("Click");
             gameObject.SetActive(false);
         });
 
@@ -33,6 +34,7 @@ public class LogsWinScript : MonoBehaviour
 
             logsBtnList[index].onClick.AddListener(() =>
             {
+                AudioManager.Instance.Play("Click");
                 logsScreen.SetActive(true);
 
                 // Lấy Component TMP_Text

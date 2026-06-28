@@ -12,6 +12,7 @@ public class LogsScreen : MonoBehaviour
     {
         backwardBtn.onClick.AddListener(() =>
         {
+            AudioManager.Instance.Play("Click");
             gameObject.SetActive(false);
         });
     }

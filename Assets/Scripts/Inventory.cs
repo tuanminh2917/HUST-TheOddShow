@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.EventSystems;
-
 using System.Collections;
 
 public class Inventory : MonoBehaviour
 {
+    // --- SINGLETON PATTERN ---
+    public static Inventory Instance { get; private set; }
+
     [SerializeField] private List<GameObject> slotList;
     [SerializeField] private TMP_Text itemName;
 
@@ -14,6 +16,20 @@ public class Inventory : MonoBehaviour
     private Coroutine clearNameCoroutine;
 
     public GameObject popup;
+
+    private void Awake()
+    {
+        // Khởi tạo Singleton và đảm bảo không bị trùng lặp
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+
+        // Nếu muốn Inventory tồn tại xuyên suốt các Scene, bỏ comment dòng dưới:
+        // DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
@@ -37,10 +53,40 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            //AudioManager.Instance.Play("Click");
             CheckClickedSlot();
         }
 
         CheckForKey(); // sẽ xóa trong các phiên bản sau
+    }
+
+    // --- HÀM MỚI BỔ SUNG: Thêm item prefab vào slot trống ---
+    public bool AddItemToEmptySlot(GameObject itemPrefab)
+    {
+        if (itemPrefab == null)
+        {
+            Debug.LogWarning("Prefab truyền vào bị null!");
+            return false;
+        }
+
+        GameObject emptySlot = GetEmptySlot();
+
+        if (emptySlot != null)
+        {
+            // Sinh ra item mới và đặt nó làm con của slot trống tìm được
+            GameObject newItem = Instantiate(itemPrefab, emptySlot.transform);
+
+            // Đặt lại vị trí local về gốc tọa độ của Slot UI để nó nằm căn giữa slot
+            newItem.transform.localPosition = Vector3.zero;
+
+            Debug.Log($"Đã thêm thành công {itemPrefab.name} vào {emptySlot.name}");
+            return true; // Thêm thành công
+        }
+        else
+        {
+            Debug.LogWarning("Kho đồ đã đầy, không thể thêm item!");
+            return false; // Thêm thất bại do hết chỗ
+        }
     }
 
     private void CheckClickedSlot()

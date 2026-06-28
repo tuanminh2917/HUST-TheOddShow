@@ -46,20 +46,35 @@ public class PetriDish1 : MonoBehaviour, IDropHandler, IPointerClickHandler
             switch (currentState)
             {
                 case DishState.Empty:
-                    if (id == "CuO") { currentState = DishState.HasCuO; isIngredientConsumed = true; }
-                    else if (id == "Alcohol") { currentState = DishState.HasAlcohol; isIngredientConsumed = true; }
+                    if (id == "CuO") { 
+                        currentState = DishState.HasCuO; isIngredientConsumed = true;
+                        AudioManager.Instance.Play("powder");
+                    }
+                    else if (id == "Alcohol") { 
+                        currentState = DishState.HasAlcohol; isIngredientConsumed = true;
+                        AudioManager.Instance.Play("liquid pour");
+                    }
                     break;
 
                 case DishState.HasCuO:
-                    if (id == "Alcohol") { currentState = DishState.HasBoth; isIngredientConsumed = true; }
+                    if (id == "Alcohol") { 
+                        currentState = DishState.HasBoth; isIngredientConsumed = true;
+                        AudioManager.Instance.Play("liquid pour");
+                    }
                     break;
 
                 case DishState.HasAlcohol:
-                    if (id == "CuO") { currentState = DishState.HasBoth; isIngredientConsumed = true; }
+                    if (id == "CuO") { 
+                        currentState = DishState.HasBoth; isIngredientConsumed = true;
+                        AudioManager.Instance.Play("powder");
+                    }
                     break;
 
                 case DishState.HasBoth:
-                    if (id == "Match") { currentState = DishState.Lit; isIngredientConsumed = true; }
+                    if (id == "Match") { 
+                        currentState = DishState.Lit; isIngredientConsumed = true;
+                        AudioManager.Instance.Play("fire woosh");
+                    }
                     break;
             }
 

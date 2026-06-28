@@ -28,18 +28,21 @@ public class PasswordScreen : MonoBehaviour
             if (btn == null) continue;
             Button capturedButton = btn;
             capturedButton.onClick.AddListener(() => OnDigitClicked(capturedButton));
+            capturedButton.onClick.AddListener(() => AudioManager.Instance.Play("Click"));
         }
 
         // Đăng ký phím Delete
         if (functionalButtons != null && functionalButtons.Count > 0 && functionalButtons[0] != null)
         {
             functionalButtons[0].onClick.AddListener(OnDeleteClicked);
+            functionalButtons[0].onClick.AddListener(() => AudioManager.Instance.Play("Click"));
         }
 
         // Đăng ký phím GO
         if (functionalButtons != null && functionalButtons.Count > 1 && functionalButtons[1] != null)
         {
             functionalButtons[1].onClick.AddListener(OnGoClicked);
+            functionalButtons[1].onClick.AddListener(() => AudioManager.Instance.Play("Click"));
         }
     }
 

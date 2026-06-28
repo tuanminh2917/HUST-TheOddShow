@@ -6,6 +6,8 @@ public class CollectableItem : MonoBehaviour, IPointerClickHandler
 {
     public void OnPointerClick(PointerEventData eventData)
     {
+        AudioManager.Instance.Play("Click");
+
         // Tìm kiếm script Inventory đang có trong Scene (Chuẩn Unity 6)
         Inventory inventory = Object.FindAnyObjectByType<Inventory>();
 
