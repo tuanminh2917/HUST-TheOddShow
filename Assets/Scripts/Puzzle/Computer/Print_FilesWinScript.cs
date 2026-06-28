@@ -15,10 +15,12 @@ public class Print_FilesWinScript : MonoBehaviour
     {
         backwardBtn.onClick.AddListener(() =>
         {
+            AudioManager.Instance.Play("Click");
             gameObject.SetActive(false);
         });
 
-        keyBtn.onClick.AddListener(() => { 
+        keyBtn.onClick.AddListener(() => {
+            AudioManager.Instance.Play("Click");
             keyModelScreen.SetActive(true);
         });
     }

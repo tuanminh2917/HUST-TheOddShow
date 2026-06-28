@@ -10,11 +10,15 @@ public class KeyModelScreen : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        printBtn.onClick.AddListener(() => { 
+        printBtn.onClick.AddListener(() => {
+            AudioManager.Instance.Play("printer");
             printerPuzzle.SetActive(true);
             printerPuzzle.GetComponentInChildren<Printer>().isPrinted = true;
         });
-        backwardBtn.onClick.AddListener(() => { gameObject.SetActive(false); });
+        backwardBtn.onClick.AddListener(() => {
+            AudioManager.Instance.Play("Click");
+            gameObject.SetActive(false); 
+        });
     }
 
 }
