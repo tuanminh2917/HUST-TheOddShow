@@ -1,0 +1,63 @@
+#Background {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 10, 12, 0.85);
+    padding: 24px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#settings-title {
+    color: rgb(255, 255, 255);
+    font-size: 28px;
+    -unity-font-style: Bold;
+    margin-bottom: 12px;
+    unity-text-align: MiddleCenter;
+}
+
+#slider-sfx,
+#slider-bgm {
+    width: 420px;
+    height: 48px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    padding: 8px;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+#button-row {
+    margin-top: 18px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#button-row > Button {
+    margin-right: 12px;
+}
+
+#button-row > Button.last {
+    margin-right: 0;
+}
+
+#resume-btn,
+#quit-btn {
+    width: 160px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.35);
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    -unity-font-style: Bold;
+    align-items: center;
+    justify-content: center;
+    transition-property: opacity;
+    transition-duration: 150ms;
+    cursor: auto;
+}
+
+
