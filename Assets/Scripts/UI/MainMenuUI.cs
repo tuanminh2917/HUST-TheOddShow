@@ -1,21 +1,34 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
-    public Button playBtn;
+    public Button continueBtn;
+    public Button quitBtn;
+
+    public GameObject introUI;
+    public GameObject startUI;
+
     void Start()
     {
-        playBtn.onClick.AddListener(() =>
+        introUI.SetActive(false);
+        continueBtn.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("InGame");
+            AudioManager.Instance.Play("Click");
+            startUI.gameObject.SetActive(false);
+            introUI.SetActive(true);
+            introUI.GetComponentInChildren<Button>().onClick.AddListener(() =>
+            {
+                AudioManager.Instance.Play("Click");
+                Debug.Log("Bắt đầu trò chơi");
+                introUI.SetActive(false);
+                SceneLoader.Instance.LoadNextScene("MidScene");
+            });
         });
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        quitBtn.onClick.AddListener(() =>
+        {
+            Application.Quit();
+        });
     }
 }

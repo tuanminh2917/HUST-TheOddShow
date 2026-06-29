@@ -40,6 +40,8 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
+        // Bắt đầu chạy BGM
+        AudioManager.Instance.Play("BGM1");
         // Đầu game chỉ hiện di chuyển
         UpdateTutorialZone(new List<TutorialType> { TutorialType.ClickToMove }, true);
     }
