@@ -8,7 +8,7 @@ public class EndPopup : MonoBehaviour
         gameObject.GetComponentInChildren<Button>().onClick.AddListener(() => {
             AudioManager.Instance.StopBGM();
             AudioManager.Instance.Play("Click");
-            SceneLoader.Instance.LoadNextScene("CreditScene");
+            SceneLoader.Instance.LoadNextScene("EndScene");
         });
     }
 }

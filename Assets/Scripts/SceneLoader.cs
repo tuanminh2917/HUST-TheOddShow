@@ -61,7 +61,7 @@ public class SceneLoader : MonoBehaviour
             transition.SetTrigger("Start"); // Làm tối màn hình (Fade Out)
         }
 
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSecondsRealtime(transitionTime);
         SceneManager.LoadScene(sceneName);
     }
 }

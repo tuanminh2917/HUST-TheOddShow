@@ -12,6 +12,7 @@ public class KeyModelScreen : MonoBehaviour
     {
         printBtn.onClick.AddListener(() => {
             AudioManager.Instance.Play("printer");
+            FindFirstObjectByType<HintManager>().UpdateProgress(4);
             printerPuzzle.SetActive(true);
             printerPuzzle.GetComponentInChildren<Printer>().isPrinted = true;
         });

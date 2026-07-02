@@ -12,6 +12,7 @@ public class LogsWinScript : MonoBehaviour
 
     
     [Header("Message")]
+    [TextArea(3, 10)]
     public string[] message;
             
 
@@ -45,6 +46,15 @@ public class LogsWinScript : MonoBehaviour
                     // Sử dụng biến index thay vì dùng i
                     string v = message[index];
                     msgComponent.text = v;
+
+                    // --- ĐOẠN BỔ SUNG ĐỂ TỰ ĐỘNG CẬP NHẬT ĐỘ DÀI CONTENT ---
+                    // Lấy RectTransform của Content (chính là cha của Text component)
+                    RectTransform contentRect = msgComponent.transform.parent as RectTransform;
+                    if (contentRect != null)
+                    {
+                        // Ép hệ thống giao diện UI cập nhật lại kích thước ngay lập tức
+                        LayoutRebuilder.ForceRebuildLayoutImmediate(contentRect);
+                    }
                 }
             });
         }

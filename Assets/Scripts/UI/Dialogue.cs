@@ -36,6 +36,7 @@ public class Dialogue : MonoBehaviour
             else
             {
                 if (typeLineCoroutine != null) StopCoroutine(typeLineCoroutine);
+                AudioManager.Instance.StopAllSFX(); // Dừng âm thanh gõ khi người chơi nhấn chuột
                 textComponent.text = lines[index];
             }
         }

@@ -74,6 +74,7 @@ public class PasswordScreen : MonoBehaviour
             Debug.Log("Mật khẩu đúng: " + password);
 
             Debug.Log("Mật khẩu chính xác!");
+            FindFirstObjectByType<HintManager>().UpdateProgress(3);
             mainScreen.SetActive(true);
             gameObject.SetActive(false);
         }

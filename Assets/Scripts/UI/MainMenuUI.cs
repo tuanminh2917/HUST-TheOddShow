@@ -24,6 +24,7 @@ public class MainMenuUI : MonoBehaviour
                 Debug.Log("Bắt đầu trò chơi");
                 introUI.SetActive(false);
                 SceneLoader.Instance.LoadNextScene("MidScene");
+                //SceneLoader.Instance.LoadNextScene("CreditScene");
             });
         });
         quitBtn.onClick.AddListener(() =>

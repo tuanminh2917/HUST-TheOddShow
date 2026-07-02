@@ -94,6 +94,7 @@ public class PoweredWireUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
 
             // Cập nhật vị trí đầu dây đi theo chuột một cách tuyệt đối (cộng thêm offset ban đầu)
             rectTransform.anchoredPosition = localMousePos + dragOffset;
+            //rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
         }
     }
 

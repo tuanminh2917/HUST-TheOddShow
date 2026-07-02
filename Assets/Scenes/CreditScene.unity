@@ -330,6 +330,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 5722360711050554799, guid: c8f1f6a35bcfd6744adc012f6326d5c2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -537,7 +541,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6320959087921375663, guid: a92a18cfab99c3643b6157a7470617ab, type: 3}
       propertyPath: 'lines.Array.data[4]'
-      value: "<b>Game c\xF3 s\u1EED d\u1EE5ng \xE2m thanh c\u1EE7a: </b> ZapSplat"
+      value: "<b>Game c\xF3 s\u1EED d\u1EE5ng \xE2m thanh c\u1EE7a: </b> freesound.org,
+        mixkit.co, zaplsat.com, incompetech"
       objectReference: {fileID: 0}
     - target: {fileID: 6320959087921375663, guid: a92a18cfab99c3643b6157a7470617ab, type: 3}
       propertyPath: onDialogueComplete.m_PersistentCalls.m_Calls.Array.size

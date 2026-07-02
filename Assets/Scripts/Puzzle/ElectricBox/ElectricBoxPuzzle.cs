@@ -14,6 +14,7 @@ public class ElectricBoxPuzzle : MonoBehaviour
         }
         electricBox.SetActive(true);
         electricBox.GetComponentInChildren<ElectricBox>().isConnected = true;
+        FindFirstObjectByType<HintManager>().UpdateProgress(2);
         gameObject.SetActive(false);
     }
 }

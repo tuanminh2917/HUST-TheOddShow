@@ -57,7 +57,19 @@ public class Inventory : MonoBehaviour
             CheckClickedSlot();
         }
 
-        CheckForKey(); // sẽ xóa trong các phiên bản sau
+        if (CheckForItem("Key") || CheckForItem("key"))
+        {
+            FindFirstObjectByType<HintManager>().UpdateProgress(5);
+            if (popup != null)
+            {
+                popup.SetActive(true); // Hiển thị popup
+            }
+            Time.timeScale = 0f; // Dừng trò chơi
+        }
+        else if (CheckForItem("Copper") || CheckForItem("copper"))
+        {
+            FindFirstObjectByType<HintManager>().UpdateProgress(1);
+        }
     }
 
     // --- HÀM MỚI BỔ SUNG: Thêm item prefab vào slot trống ---
@@ -167,11 +179,14 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // BỔ SUNG: Hàm phát hiện item 'Key', hiển thị popup và dừng trò chơi
-    private void CheckForKey()
+    // ĐÃ SỬA: Hàm trả về kiểu bool (true nếu tìm thấy item, false nếu không tìm thấy)
+    private bool CheckForItem(string targetValue)
     {
-        // Nếu popup đã hiển thị (trò chơi đã dừng), không cần quét lại để tránh tốn hiệu năng
-        if (popup != null && popup.activeSelf) return;
+        // Nếu không truyền gì vào hoặc chuỗi rỗng thì coi như không tìm thấy
+        if (string.IsNullOrEmpty(targetValue)) return false;
+
+        // Nếu popup đã hiển thị (trò chơi đã dừng), không cần quét lại và trả về false
+        if (popup != null && popup.activeSelf) return false;
 
         foreach (GameObject slot in slotList)
         {
@@ -179,19 +194,21 @@ public class Inventory : MonoBehaviour
             {
                 DragDrop item = slot.GetComponentInChildren<DragDrop>();
 
-                // Kiểm tra xem trong slot có item không, và ID hoặc Tên của item đó có phải là "Key" hay không
-                if (item != null && (item.id == "Key" || item.gameObject.name == "Key"))
+                // Kiểm tra xem trong slot có item không, và ID hoặc Tên có khớp không
+                if (item != null && (item.id == targetValue || item.gameObject.name == targetValue))
                 {
-                    if (popup != null)
-                    {
-                        popup.SetActive(true); // Hiển thị popup
-                    }
+                    //if (popup != null)
+                    //{
+                    //    popup.SetActive(true); // Hiển thị popup
+                    //}
 
-                    Time.timeScale = 0f; // Dừng toàn bộ các hoạt động vật lý/thời gian trong trò chơi
+                    //Time.timeScale = 0f; // Dừng trò chơi
 
-                    break; // Thoát vòng lặp ngay khi tìm thấy chiếc chìa khóa đầu tiên
+                    return true; // Trả về true và thoát hàm ngay lập tức (thay thế cho break)
                 }
             }
         }
+
+        return false; // Đi hết cả danh sách slot mà không thấy item nào khớp
     }
 }
